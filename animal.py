@@ -17,3 +17,7 @@ class Zebra(Animal):
 
     def breed(self, x, y):
         print('<<< NOT IMPLEMENTED >>>')
+        
+class Lion(Animal):
+    def mov(self):
+        print('<<< NOT IMPLEMENTED >>>')
