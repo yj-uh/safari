@@ -69,3 +69,4 @@ class Lion(Animal):
             self.hp = 3
         else:
             self.move_to(grid, target='.')
+            self.hp -= 1
