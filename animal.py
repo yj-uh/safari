@@ -30,11 +30,11 @@ class Animal:
         neighbors.append([x, y - 1])
         neighbors.append([x, y + 1])
         neighbors_valid = [neighbor for neighbor in neighbors
-                           if grid[neighbor[1]][neighbor[0]] == target
-                           and neighbor[0] >= 0
+                           if neighbor[0] >= 0
                            and neighbor[0] < world_width
                            and neighbor[1] >= 0
-                           and neighbor[1] < world_height]
+                           and neighbor[1] < world_height
+                           and grid[neighbor[1]][neighbor[0]] == target]
         return neighbors_valid
 
     def breed(self, x, y):
