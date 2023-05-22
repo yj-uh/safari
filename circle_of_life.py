@@ -53,11 +53,13 @@ class CircleOfLife:
             x, y = 0, 0
             animal.breed(x, y)
 
-    def clear_bodies(self):
+    def housekeeping(self):
         for y, line in enumerate(self.grid):
             for x, animal in enumerate(line):
                 if animal.hp == 0:
                     self.grid[y][x] = Empty(y, x)
+                else:
+                    self.grid[y][x].age += 1
 
     def run(self, num_timesteps=100):
         self.display()
@@ -67,7 +69,7 @@ class CircleOfLife:
             self.display()
             self.step_breed()
             self.display()
-            self.clear_bodies()
+            self.housekeeping()
 
 
 if __name__ == '__main__':
