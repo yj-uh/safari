@@ -57,6 +57,9 @@ class Zebra(Animal):
     def move(self, grid):
         self.move_to(grid, target='.')
 
+    def is_ready_to_breed(self):
+        return self.age != 0 and self.age % 3 == 0
+
 class Lion(Animal):
     def __str__(self):
         return 'L'
@@ -68,3 +71,6 @@ class Lion(Animal):
         else:
             self.move_to(grid, target='.')
             self.hp -= 1
+
+    def is_ready_to_breed(self):
+        return self.age != 0 and self.age % 8 == 0

@@ -47,7 +47,8 @@ class CircleOfLife:
 
     def step_breed(self):
         animals = [animal for line in self.grid for animal in line
-                   if not isinstance(animal, Empty)]
+                   if not isinstance(animal, Empty)
+                   and animal.is_ready_to_breed()]
         for animal in animals:
             animal.breed(self.grid)
 
