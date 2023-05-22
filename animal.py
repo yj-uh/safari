@@ -41,9 +41,10 @@ class Animal:
                            and str(grid[neighbor[0]][neighbor[1]]) == target]
         return neighbors_valid
 
-    def breed(self, y, x):
-        print(f'breed to {y}, {x}. <<< NOT IMPLEMENTED YET >>>')
-        # return Animal(x, y)
+    def breed(self, grid):
+        child = self.__class__(self.y, self.x)
+        child.move_to(grid, target='.')
+        grid[self.y][self.x] = self
 
 class Empty(Animal):
     def __str__(self):
@@ -56,9 +57,6 @@ class Zebra(Animal):
     def move(self, grid):
         self.move_to(grid, target='.')
 
-    def breed(self, y, x):
-        print('<<< NOT IMPLEMENTED >>>')
-        
 class Lion(Animal):
     def __str__(self):
         return 'L'

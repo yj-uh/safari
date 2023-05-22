@@ -46,12 +46,10 @@ class CircleOfLife:
                 animal.move(self.grid)
 
     def step_breed(self):
-        print_TODO('step_breed()')
-        return
-        for animal in self.zebras + self.lions:
-            print_TODO('get empty neighbor')
-            x, y = 0, 0
-            animal.breed(x, y)
+        animals = [animal for line in self.grid for animal in line
+                   if not isinstance(animal, Empty)]
+        for animal in animals:
+            animal.breed(self.grid)
 
     def housekeeping(self):
         for y, line in enumerate(self.grid):
