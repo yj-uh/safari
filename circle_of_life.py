@@ -1,18 +1,28 @@
+import random
 from animal import Zebra, Lion
 from utils import print_TODO
 
 class CircleOfLife:
     def __init__(self, world_size, num_zebras, num_lions):
         self.world_size = world_size
-        print_TODO('get random empty coordinates')
-        self.zebras = [Zebra(0, 0) for _ in range(num_zebras)]
-        self.lions = [Lion(0, 0) for _ in range(num_lions)]
+        random.seed(0)
+        zebra_coords, lion_coords = self.get_random_coords(num_zebras, num_lions)
+        self.zebras = [Zebra(y, x) for (y, x) in zebra_coords]
+        self.lions = [Lion(y, x) for (y, x) in lion_coords]
         self.update_grid()
         self.timestep = 0
         print('Welcome to AIE Safari!')
         print(f'\tworld size = {world_size}')
         print(f'\tnumber of zebras = {len(self.zebras)}')
         print(f'\tnumber of lions = {len(self.lions)}')
+
+    def get_random_coords(self, num_zebras, num_lions):
+        all_coords = [(y, x) for y in range(self.world_size)
+                       for x in range(self.world_size)]
+        zebra_coords = random.sample(all_coords, num_zebras)
+        all_coords = list(set(all_coords) - set(zebra_coords))
+        lion_coords = random.sample(all_coords, num_lions)
+        return zebra_coords, lion_coords
 
     def update_grid(self):
         self.grid = [['.' for _ in range(self.world_size)]
@@ -63,4 +73,4 @@ if __name__ == '__main__':
     # safari.display()
     # safari.step_move()
     # safari.step_breed()
-    safari.run(2)
+    safari.run(10)
