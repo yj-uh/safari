@@ -16,6 +16,7 @@ class Animal:
             grid[self.y][self.x] = Empty(self.y, self.x)
             chosen_neighbor = random.choice(neighbors)
             self.y, self.x = chosen_neighbor
+            grid[self.y][self.x].hp = 0  # kill
             grid[self.y][self.x] = self
             return True
         else:
